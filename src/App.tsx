@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Heart, Calendar, MapPin, Gift, Clock, ChevronDown } from 'lucide-react';
 import foto1 from './assets/foto1.jpg';
+import { useEffect } from 'react';
 
 function App() {
   const [showContent, setShowContent] = useState(false);
@@ -25,6 +26,20 @@ function App() {
     const timer = setInterval(() => {
       setTimeLeft(calculateTimeLeft());
     }, 1000);
+
+    const playMusic = () => {
+      console.log("halo");
+      const bgm = document.getElementById('bgm') as HTMLAudioElement;
+      if (bgm) {
+        bgm.play().catch((err) => {
+          console.warn('Autoplay failed:', err);
+        });
+      }
+      window.removeEventListener('click', playMusic);
+    };
+
+    window.addEventListener('click', playMusic);
+
     return () => clearInterval(timer);
   }, []);
 
