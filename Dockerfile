@@ -14,8 +14,14 @@ COPY . .
 # 5. Build TypeScript to JavaScript
 RUN npm run build
 
+# Step 2: Serve with Nginx
+FROM nginx:stable-alpine
+COPY --from=builder /app/dist /usr/share/nginx/html
+
 # 6. Expose the app port
 EXPOSE 80
 
 # 7. Run the app (compiled JS from /dist)
-CMD ["npm", "start"]
+# CMD ["node", "dist/index.js"]
+
+CMD ["nginx", "-g", "daemon off;"]
