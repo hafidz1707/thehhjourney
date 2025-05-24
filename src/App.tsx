@@ -277,7 +277,7 @@ function App() {
           {/* RSVP Section */}
           <section className="py-20 px-4 bg-white">
             <div className="max-w-xl mx-auto text-center space-y-8">
-              <h2 className="font-serif text-3xl md:text-4xl text-gray-800">Konfirmasi Kehadiran</h2>
+              <h2 className="font-serif text-3xl md:text-4xl text-gray-800">Absen dulu gais</h2>
               
               <form className="space-y-4">
                 <input
