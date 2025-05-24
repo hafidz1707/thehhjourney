@@ -302,7 +302,7 @@ function App() {
                 ></textarea>
                 <button
                   type="submit"
-                  className="w-full px-6 py-3 bg-rose-400 text-white rounded-full hover:bg-rose-500 transition-all shadow-lg cursor-not-allowed"
+                  className="w-full px-6 py-3 bg-gray-400 text-white rounded-full hover:bg-rose-500 transition-all shadow-lg cursor-not-allowed"
                   disabled={true}
                 >
                   Kirim
