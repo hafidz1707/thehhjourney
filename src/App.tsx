@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
 import { Heart, Calendar, MapPin, Gift, Clock, ChevronDown } from 'lucide-react';
+import foto1 from './assets/foto1.jpg';
 
 function App() {
   const [showContent, setShowContent] = useState(false);
-  const weddingDate = new Date('2025-07-20T08:00:00');
+  const weddingDate = new Date('2025-07-19T00:00:00');
 
   const calculateTimeLeft = () => {
     const difference = +weddingDate - +new Date();
@@ -15,6 +16,8 @@ function App() {
     };
     return timeLeft;
   };
+
+  const galleries = [foto1, foto1, foto1, foto1, foto1, foto1];
 
   const [timeLeft, setTimeLeft] = useState(calculateTimeLeft());
 
@@ -31,9 +34,9 @@ function App() {
       <section className="h-screen flex flex-col items-center justify-center relative text-center px-4">
         <div className="space-y-6 animate-fade-in">
           <Heart className="w-16 h-16 text-rose-400 mx-auto animate-pulse" />
-          <h1 className="font-serif text-4xl md:text-6xl text-gray-800">Pria & Wanita</h1>
+          <h1 className="font-serif text-4xl md:text-6xl text-gray-800">Helmi & Hafidz</h1>
           <p className="text-gray-600">Kami mengundang Anda untuk merayakan hari bahagia kami</p>
-          <p className="font-serif text-2xl text-gray-700">20 Juli 2025</p>
+          <p className="font-serif text-2xl text-gray-700">19 Juli 2025</p>
           <div className="grid grid-cols-4 gap-4 max-w-md mx-auto">
             <div className="bg-white p-3 rounded-lg shadow-md">
               <div className="text-2xl font-bold text-rose-400">{timeLeft.days}</div>
@@ -79,31 +82,15 @@ function App() {
                       <div className="ml-6 md:ml-0 md:flex md:items-center">
                         <div className="md:w-1/2 md:pr-8 text-right hidden md:block">
                           <h3 className="font-serif text-xl text-gray-800">Pertama Bertemu</h3>
-                          <p className="text-gray-600">Januari 2025</p>
+                          <p className="text-gray-600">Mei 2024</p>
                         </div>
                         <div className="absolute left-0 md:left-1/2 mt-3 md:mt-0 -ml-3 md:-ml-3">
                           <div className="w-6 h-6 bg-rose-400 rounded-full"></div>
                         </div>
                         <div className="md:w-1/2 md:pl-8">
                           <h3 className="font-serif text-xl text-gray-800 md:hidden">Pertama Bertemu</h3>
-                          <p className="text-gray-600 md:hidden">Januari 2025</p>
-                          <p className="text-gray-600 mt-2">Lorem ipsum dolor sit amet consectetur adipisicing elit. Aperiam aliquid minus ipsa nemo ea, reprehenderit et consequatur eos quaerat maxime.</p>
-                        </div>
-                      </div>
-                    </div>
-                    <div className="relative">
-                      <div className="ml-6 md:ml-0 md:flex md:items-center">
-                        <div className="md:w-1/2 md:pr-8 text-right hidden md:block">
-                          <h3 className="font-serif text-xl text-gray-800">Mulai Menjalin Hubungan</h3>
-                          <p className="text-gray-600">Januari 2025</p>
-                        </div>
-                        <div className="absolute left-0 md:left-1/2 mt-3 md:mt-0 -ml-3 md:-ml-3">
-                          <div className="w-6 h-6 bg-rose-400 rounded-full"></div>
-                        </div>
-                        <div className="md:w-1/2 md:pl-8">
-                          <h3 className="font-serif text-xl text-gray-800 md:hidden">Mulai Menjalin Hubungan</h3>
-                          <p className="text-gray-600 md:hidden">Januari 2025</p>
-                          <p className="text-gray-600 mt-2">Setelah saling mengenal lebih dalam, kami memutuskan untuk menjalin hubungan yang lebih serius.</p>
+                          <p className="text-gray-600 md:hidden">Mei 2024</p>
+                          <p className="text-gray-600 mt-2">Pertama kali kenal dengannya di bulan ini. Kami satu SMA dan satu angkatan, tetapi kami tidak saling mengenal satu sama lain. Ini merupakan momen kami untuk mengenal dan menggali karakter masing-masing.</p>
                         </div>
                       </div>
                     </div>
@@ -111,15 +98,31 @@ function App() {
                       <div className="ml-6 md:ml-0 md:flex md:items-center">
                         <div className="md:w-1/2 md:pr-8 text-right hidden md:block">
                           <h3 className="font-serif text-xl text-gray-800">Lamaran</h3>
-                          <p className="text-gray-600">Januari 2025</p>
+                          <p className="text-gray-600">Desember 2024</p>
                         </div>
                         <div className="absolute left-0 md:left-1/2 mt-3 md:mt-0 -ml-3 md:-ml-3">
                           <div className="w-6 h-6 bg-rose-400 rounded-full"></div>
                         </div>
                         <div className="md:w-1/2 md:pl-8">
                           <h3 className="font-serif text-xl text-gray-800 md:hidden">Lamaran</h3>
-                          <p className="text-gray-600 md:hidden">Januari 2025</p>
-                          <p className="text-gray-600 mt-2">Moment indah ketika Rama melamar Sinta di hadapan kedua keluarga besar.</p>
+                          <p className="text-gray-600 md:hidden">Desember 2024</p>
+                          <p className="text-gray-600 mt-2">Hampir setiap hari kami selalu mempelajari apa yang ada di dalam pasangan kami, karakter, kebiasaan, prinsip kehidupan, hobby, kesukaan, mimpi dan angan-angan. Hingga kami akhirnya saling menerima kelebihan maupun kekurangan kami.</p>
+                        </div>
+                      </div>
+                    </div>
+                    <div className="relative">
+                      <div className="ml-6 md:ml-0 md:flex md:items-center">
+                        <div className="md:w-1/2 md:pr-8 text-right hidden md:block">
+                          <h3 className="font-serif text-xl text-gray-800">Membangun Masa Depan</h3>
+                          <p className="text-gray-600">Juli 2025 ~ Future</p>
+                        </div>
+                        <div className="absolute left-0 md:left-1/2 mt-3 md:mt-0 -ml-3 md:-ml-3">
+                          <div className="w-6 h-6 bg-rose-400 rounded-full"></div>
+                        </div>
+                        <div className="md:w-1/2 md:pl-8">
+                          <h3 className="font-serif text-xl text-gray-800 md:hidden">Membangun Masa Depan</h3>
+                          <p className="text-gray-600 md:hidden">Juli 2025 ~ Future</p>
+                          <p className="text-gray-600 mt-2">Lembaran cerita baru</p>
                         </div>
                       </div>
                     </div>
@@ -138,7 +141,7 @@ function App() {
                 <div className="space-y-4 group">
                   <div className="relative">
                     <img
-                      src="#"
+                      src={foto1}
                       alt="Mempelai Pria"
                       className="w-64 h-64 object-cover rounded-full mx-auto ring-4 ring-rose-200 group-hover:ring-rose-400 transition-all duration-300"
                     />
@@ -147,11 +150,11 @@ function App() {
                     </div>
                   </div>
                   <div>
-                    <h3 className="font-serif text-2xl text-gray-800">Nama mempelai Pria</h3>
+                    <h3 className="font-serif text-2xl text-gray-800">Hafidz Naufal Aryan</h3>
                     <p className="text-gray-600 mt-2">Putra Pertama dari</p>
-                    <p className="text-gray-800 font-medium">Bpk. *** & Ibu ***</p>
+                    <p className="text-gray-800 font-medium">Bpk. Agus Prikuncoro & Ibu Siti Muthingah</p>
                     <div className="mt-4 flex justify-center space-x-4">
-                      <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" className="text-rose-400 hover:text-rose-500">@</a>
+                      <a href="https://instagram.com/hafidznaufalaryann" target="_blank" rel="noopener noreferrer" className="text-rose-400 hover:text-rose-500">@hafidz</a>
                     </div>
                   </div>
                 </div>
@@ -159,7 +162,7 @@ function App() {
                 <div className="space-y-4 group">
                   <div className="relative">
                     <img
-                      src="https://images.unsplash.com/photo-1609241728358-53d49c22c01c?w=500"
+                      src={foto1}
                       alt="Mempelai Wanita"
                       className="w-64 h-64 object-cover rounded-full mx-auto ring-4 ring-rose-200 group-hover:ring-rose-400 transition-all duration-300"
                     />
@@ -168,11 +171,11 @@ function App() {
                     </div>
                   </div>
                   <div>
-                    <h3 className="font-serif text-2xl text-gray-800">Nama mempelai Wanita</h3>
+                    <h3 className="font-serif text-2xl text-gray-800">Helmi Adiningtyas</h3>
                     <p className="text-gray-600 mt-2">Putri Kedua dari</p>
-                    <p className="text-gray-800 font-medium">Bpk. *** & Ibu ***</p>
+                    <p className="text-gray-800 font-medium">Bpk. Pujiadi & Ibu Siti Bariroh</p>
                     <div className="mt-4 flex justify-center space-x-4">
-                      <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" className="text-rose-400 hover:text-rose-500">@</a>
+                      <a href="https://instagram.com/helmyadrr" target="_blank" rel="noopener noreferrer" className="text-rose-400 hover:text-rose-500">@helmi</a>
                     </div>
                   </div>
                 </div>
@@ -194,15 +197,15 @@ function App() {
                   <div className="space-y-2 text-gray-600">
                     <p className="flex items-center justify-center gap-2">
                       <Calendar className="w-5 h-5" />
-                      Sabtu, 20 Desember 2025
+                      Sabtu, 19 Juli 2025
                     </p>
                     <p className="flex items-center justify-center gap-2">
                       <Clock className="w-5 h-5" />
-                      08:00 - 10:00 WIB
+                      09:00 - 11:00 WIB
                     </p>
                     <p className="flex items-center justify-center gap-2">
                       <MapPin className="w-5 h-5" />
-                      Lorem ipsum dolor sit amet.
+                      Kedungpring, Kemranjen, Banyumas
                     </p>
                   </div>
                 </div>
@@ -215,15 +218,15 @@ function App() {
                   <div className="space-y-2 text-gray-600">
                     <p className="flex items-center justify-center gap-2">
                       <Calendar className="w-5 h-5" />
-                      Sabtu, 20 Desember 2025
+                      Sabtu, 19 Juli 2025
                     </p>
                     <p className="flex items-center justify-center gap-2">
                       <Clock className="w-5 h-5" />
-                      11:00 - 14:00 WIB
+                      11:00 WIB - selesai
                     </p>
                     <p className="flex items-center justify-center gap-2">
                       <MapPin className="w-5 h-5" />
-                      Lorem ipsum dolor sit.
+                      Kedungpring, Kemranjen, Banyumas
                     </p>
                   </div>
                 </div>
@@ -231,7 +234,7 @@ function App() {
 
               <div className="pt-8">
                 <a
-                  href="https://goo.gl/maps/example"
+                  href="https://maps.app.goo.gl/ZaKFNbJ1B9JBWnWWA?g_st=aw"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="inline-flex items-center gap-2 px-6 py-3 bg-rose-400 text-white rounded-full hover:bg-rose-500 transition-all shadow-lg"
@@ -249,14 +252,15 @@ function App() {
               <h2 className="font-serif text-3xl md:text-4xl text-gray-800">Galeri Foto</h2>
               
               <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
-                {[
+                {/* {[
                   'https://images.unsplash.com/photo-1519741497674-611481863552?w=500',
                   'https://images.unsplash.com/photo-1511285560929-80b456fea0bc?w=500',
                   'https://images.unsplash.com/photo-1519225421980-715cb0215aed?w=500',
                   'https://images.unsplash.com/photo-1520854221256-17451cc331bf?w=500',
                   'https://images.unsplash.com/photo-1519225421980-715cb0215aed?w=500',
                   'https://images.unsplash.com/photo-1465495976277-4387d4b0b4c6?w=500'
-                ].map((url, index) => (
+                ]} */
+                galleries.map((url, index) => (
                   <div key={index} className="group relative overflow-hidden rounded-lg">
                     <img
                       src={url}
@@ -286,11 +290,11 @@ function App() {
                   <option value="hadir">Ya, Saya Akan Hadir</option>
                   <option value="tidak">Maaf, Saya Tidak Bisa Hadir</option>
                 </select>
-                <input
+                {/* <input
                   type="number"
                   placeholder="Jumlah Tamu"
                   className="w-full px-4 py-2 rounded-lg border border-gray-300 focus:outline-none focus:border-rose-400 focus:ring-2 focus:ring-rose-200"
-                />
+                /> */}
                 <textarea
                   placeholder="Ucapan & Doa"
                   rows={4}
@@ -298,7 +302,8 @@ function App() {
                 ></textarea>
                 <button
                   type="submit"
-                  className="w-full px-6 py-3 bg-rose-400 text-white rounded-full hover:bg-rose-500 transition-all shadow-lg"
+                  className="w-full px-6 py-3 bg-rose-400 text-white rounded-full hover:bg-rose-500 transition-all shadow-lg cursor-not-allowed"
+                  disabled={true}
                 >
                   Kirim
                 </button>
@@ -311,7 +316,7 @@ function App() {
             <div className="max-w-xl mx-auto space-y-4">
               <Heart className="w-8 h-8 text-rose-400 mx-auto" />
               <p>Merupakan suatu kehormatan dan kebahagiaan bagi kami apabila Bapak/Ibu/Saudara/i berkenan hadir untuk memberikan doa restu kepada kami</p>
-              <p className="font-serif text-xl text-gray-800 mt-4">Pria & Wanita</p>
+              <p className="font-serif text-xl text-gray-800 mt-4">Helmi & Hafidz</p>
             </div>
           </footer>
         </>
