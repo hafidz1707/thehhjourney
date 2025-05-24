@@ -91,7 +91,7 @@ function App() {
               <h2 className="font-serif text-3xl md:text-4xl text-gray-800">Kisah Cinta Kami</h2>
               <div className="space-y-8">
                 <div className="relative">
-                  <div className="absolute left-1/2 -ml-0.5 w-0.5 h-full bg-rose-200"></div>
+                  <div className="absolute left-[0rem] md:left-1/2 md:-translate-x-1/2 w-0.5 h-full bg-rose-200"></div>
                   <div className="space-y-12">
                     <div className="relative">
                       <div className="ml-6 md:ml-0 md:flex md:items-center">
