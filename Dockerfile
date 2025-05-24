@@ -1,27 +1,22 @@
-# 1. Base image with Node.js
-FROM node:22-alpine
-
-# 2. Create app directory
+# Stage 1: Build with Node
+FROM node:22-alpine AS builder
 WORKDIR /app
 
-# 3. Copy package.json and install deps
 COPY package*.json ./
 RUN npm install
 
-# 4. Copy the rest of the code
 COPY . .
-
-# 5. Build TypeScript to JavaScript
 RUN npm run build
 
-# Step 2: Serve with Nginx
+# Stage 2: Serve with Nginx
 FROM nginx:stable-alpine
+
+# Copy built assets from builder stage
 COPY --from=builder /app/dist /usr/share/nginx/html
 
-# 6. Expose the app port
-EXPOSE 80
+# Optional: For SPA fallback (e.g. React Router)
+# COPY nginx.conf /etc/nginx/conf.d/default.conf
 
-# 7. Run the app (compiled JS from /dist)
-# CMD ["node", "dist/index.js"]
+EXPOSE 80
 
 CMD ["nginx", "-g", "daemon off;"]
