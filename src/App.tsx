@@ -26,7 +26,7 @@ function App() {
     return timeLeft;
   };
 
-  const galleries = [photo1, photo2, photo3, photo4, photo5, photo6];
+  const galleries = [photo1, photo6, photo3, photo5, photo4, photo2];
 
   const [timeLeft, setTimeLeft] = useState(calculateTimeLeft());
 
@@ -166,7 +166,7 @@ function App() {
                     <img
                       src={photohafidz}
                       alt="Mempelai Pria"
-                      className="w-64 h-64 object-cover rounded-full mx-auto ring-4 ring-rose-200 group-hover:ring-rose-400 transition-all duration-300"
+                      className="w-64 h-64 object-cover rounded-full mx-auto ring-4 ring-rose-200 group-hover:ring-rose-400 transition-all duration-300 object-contain"
                     />
                     <div className="absolute -bottom-2 left-1/2 transform -translate-x-1/2">
                       <Heart className="w-8 h-8 text-rose-400 fill-rose-400" />
