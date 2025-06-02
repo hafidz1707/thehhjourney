@@ -1,6 +1,14 @@
 import React, { useState } from 'react';
 import { Heart, Calendar, MapPin, Gift, Clock, ChevronDown } from 'lucide-react';
 import foto1 from './assets/foto1.jpg';
+import photo1 from './assets/photo1.jpeg';
+import photo2 from './assets/photo2.jpeg';
+import photo3 from './assets/photo3.jpeg';
+import photo4 from './assets/photo4.jpeg';
+import photo5 from './assets/photo5.jpeg';
+import photo6 from './assets/photo6.jpeg';
+import photohelmi from './assets/helmi.jpeg';
+import photohafidz from './assets/hafidz.jpg';
 import { useEffect } from 'react';
 
 function App() {
@@ -18,7 +26,7 @@ function App() {
     return timeLeft;
   };
 
-  const galleries = [foto1, foto1, foto1, foto1, foto1, foto1];
+  const galleries = [photo1, photo2, photo3, photo4, photo5, photo6];
 
   const [timeLeft, setTimeLeft] = useState(calculateTimeLeft());
 
@@ -156,7 +164,7 @@ function App() {
                 <div className="space-y-4 group">
                   <div className="relative">
                     <img
-                      src={foto1}
+                      src={photohafidz}
                       alt="Mempelai Pria"
                       className="w-64 h-64 object-cover rounded-full mx-auto ring-4 ring-rose-200 group-hover:ring-rose-400 transition-all duration-300"
                     />
@@ -177,7 +185,7 @@ function App() {
                 <div className="space-y-4 group">
                   <div className="relative">
                     <img
-                      src={foto1}
+                      src={photohelmi}
                       alt="Mempelai Wanita"
                       className="w-64 h-64 object-cover rounded-full mx-auto ring-4 ring-rose-200 group-hover:ring-rose-400 transition-all duration-300"
                     />
