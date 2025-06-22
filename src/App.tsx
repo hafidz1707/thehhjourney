@@ -72,7 +72,6 @@ function App() {
     }, 1000);
 
     const playMusic = () => {
-      console.log("halo");
       const bgm = document.getElementById('bgm') as HTMLAudioElement;
       if (bgm) {
         bgm.play().catch((err) => {
@@ -382,7 +381,7 @@ function App() {
           {/* RSVP Section */}
           <section className="py-20 px-4 bg-white">
             <div className="max-w-xl mx-auto text-center space-y-8">
-              <h2 className="font-serif text-3xl md:text-4xl text-gray-800">Absen dulu gais</h2>
+              <h2 className="font-serif text-3xl md:text-4xl text-gray-800">Ucapan & Doa</h2>
 
               <form className="space-y-4" onSubmit={handleSubmit}>
                 <input
@@ -456,27 +455,6 @@ function App() {
             
           </div>
           </section>
-
-          <section className="py-16 px-4 bg-gray-50 mt-16">
-          {/* <div className="max-w-xl mx-auto space-y-8">
-            <h2 className="text-2xl font-serif text-center text-gray-800">Ucapan & Doa</h2> */}
-
-            {/* {loading ? (
-              <p className="text-center text-gray-500">Loading ucapan...</p>
-            ) : dataUcapan.length === 0 ? (
-              <p className="text-center text-gray-500">Belum ada ucapan.</p>
-            ) : (
-              <ul className="space-y-6">
-                {dataUcapan.map((item, index) => (
-                  <li key={index} className="bg-white p-4 rounded-lg shadow border border-rose-100">
-                    <p className="font-semibold text-gray-800">{item.nama}</p>
-                    <p className="text-gray-700">{item.pesan}</p>
-                  </li>
-                ))}
-              </ul>
-            )} */}
-          {/* </div> */}
-        </section>
 
           {/* Footer */}
           <footer className="py-8 px-4 bg-rose-50 text-center text-gray-600">
