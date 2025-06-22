@@ -20,6 +20,26 @@ function App() {
   //const contentRef = useRef(null);
   const contentRef = useRef<HTMLDivElement | null>(null);
 
+  const [nama, setNama] = useState('');
+  const [kehadiran, setKehadiran] = useState<boolean | null>(null);
+  const [ucapan, setUcapan] = useState('');
+  const [submitting, setSubmitting] = useState(false);
+
+  type Ucapan = {
+    nama: string;
+    pesan: string;
+  };
+  type UcapanResponse = {
+    currentPage: number;
+    totalPage: number;
+    totalRows: number;
+    data: Ucapan[];
+  };
+  const [dataUcapan, setDataUcapan] = useState<UcapanResponse['data']>([]);
+  const [currentPage, setCurrentPage] = useState(1);
+  const [totalPage, setTotalPage] = useState(1);
+  const [loading, setLoading] = useState(true);
+
   const calculateTimeLeft = () => {
     const difference = +weddingDate - +new Date();
     const timeLeft = {
@@ -67,6 +87,41 @@ function App() {
     return () => clearInterval(timer);
   }, []);
 
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setSubmitting(true);
+
+    const body = {
+      Nama: nama,
+      Kehadiran: kehadiran,
+      Pesan: ucapan,
+    };
+
+    try {
+      const response = await fetch('https://thehhjourneyapi-665803744151.asia-southeast2.run.app/Ucapan', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(body),
+      });
+
+      if (response.ok) {
+        //alert('Ucapan berhasil dikirim!');
+        setNama('');
+        setKehadiran(null);
+        setUcapan('');
+        //window.location.reload(); // 🔄 Reload the page
+      } else {
+        alert('Gagal mengirim ucapan.');
+      }
+    } catch (error) {
+      alert('Terjadi kesalahan koneksi.');
+      console.error(error);
+    } finally {
+      setSubmitting(false);
+      fetchUcapan(1);
+    }
+  };
+
   React.useEffect(() => {
     const canvas = document.getElementById("petal-canvas") as HTMLCanvasElement | null;
     if (!canvas) return;
@@ -112,6 +167,25 @@ function App() {
     return () => {
       window.removeEventListener("resize", handleResize);
     };
+  }, []);
+
+  const fetchUcapan = async (page: number) => {
+    setLoading(true);
+    try {
+      const res = await fetch(`https://thehhjourneyapi-665803744151.asia-southeast2.run.app/Ucapan?page=${page}`);
+      const result: UcapanResponse = await res.json();
+      setDataUcapan(result.data);
+      setCurrentPage(result.currentPage);
+      setTotalPage(result.totalPage);
+    } catch (error) {
+      console.error('Failed to fetch ucapan:', error);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  React.useEffect(() => {
+    fetchUcapan(currentPage);
   }, []);
 
   return (
@@ -310,32 +384,99 @@ function App() {
             <div className="max-w-xl mx-auto text-center space-y-8">
               <h2 className="font-serif text-3xl md:text-4xl text-gray-800">Absen dulu gais</h2>
 
-              <form className="space-y-4">
+              <form className="space-y-4" onSubmit={handleSubmit}>
                 <input
                   type="text"
-                  placeholder="Nama Lengkap"
+                  placeholder="Nama"
+                  value={nama}
+                  onChange={(e) => setNama(e.target.value)}
+                  required
                   className="w-full px-4 py-2 rounded-lg border border-gray-300 focus:outline-none focus:border-rose-400 focus:ring-2 focus:ring-rose-200"
                 />
-                <select className="w-full px-4 py-2 rounded-lg border border-gray-300 focus:outline-none focus:border-rose-400 focus:ring-2 focus:ring-rose-200 text-gray-500">
+                <select                   
+                  value={kehadiran === null ? '' : String(kehadiran)}
+                  onChange={(e) => setKehadiran(e.target.value === 'true')}
+                  required
+                  className="w-full px-4 py-2 rounded-lg border border-gray-300 focus:outline-none focus:border-rose-400 focus:ring-2 focus:ring-rose-200 text-gray-500">
                   <option value="" disabled selected>Konfirmasi Kehadiran</option>
-                  <option value="hadir">Ya, Saya Akan Hadir</option>
-                  <option value="tidak">Maaf, Saya Tidak Bisa Hadir</option>
+                  <option value="true">Ya, Saya Akan Hadir</option>
+                  <option value="false">Maaf, Saya Tidak Bisa Hadir</option>
                 </select>
                 <textarea
                   placeholder="Ucapan & Doa"
                   rows={4}
+                  value={ucapan}
+                  onChange={(e) => setUcapan(e.target.value)}
+                  required
                   className="w-full px-4 py-2 rounded-lg border border-gray-300 focus:outline-none focus:border-rose-400 focus:ring-2 focus:ring-rose-200"
                 ></textarea>
                 <button
                   type="submit"
-                  className="w-full px-6 py-3 bg-gray-400 text-white rounded-full hover:bg-rose-500 transition-all shadow-lg cursor-not-allowed"
-                  disabled={true}
+                  className="w-full px-6 py-3 bg-rose-400 text-white rounded-full hover:bg-rose-500 transition-all shadow-lg"
                 >
                   Kirim
                 </button>
               </form>
+
+              <div className="max-w-xl mx-auto space-y-8 text-left">
+              {/* <h2 className="text-2xl font-serif text-center text-gray-800">Ucapan & Doa</h2> */}
+              {loading ? (
+              <p className="text-center text-gray-500">Loading ucapan...</p>
+            ) : dataUcapan.length === 0 ? (
+              <p className="text-center text-gray-500">Belum ada ucapan.</p>
+            ) : (
+              <div>
+              <ul className="space-y-6">
+                {dataUcapan.map((item, index) => (
+                  <li key={index} className="bg-white p-4 rounded-lg shadow border border-rose-100">
+                    <p className="font-semibold text-gray-800">{item.nama}</p>
+                    <p className="text-gray-700">{item.pesan}</p>
+                  </li>
+                ))}
+              </ul>
+
+              <div className="flex justify-center gap-2 pt-4">
+                {Array.from({ length: totalPage }, (_, i) => i + 1).map((page) => (
+                  <button
+                    key={page}
+                    onClick={() => fetchUcapan(page)}
+                    className={`px-4 py-2 rounded-full border ${
+                      page === currentPage
+                        ? 'bg-rose-500 text-white'
+                        : 'bg-white text-gray-700 hover:bg-rose-100'
+                    }`}
+                  >
+                    {page}
+                  </button>
+                ))}
+              </div>
+              </div>
+            )}
             </div>
+            
+          </div>
           </section>
+
+          <section className="py-16 px-4 bg-gray-50 mt-16">
+          {/* <div className="max-w-xl mx-auto space-y-8">
+            <h2 className="text-2xl font-serif text-center text-gray-800">Ucapan & Doa</h2> */}
+
+            {/* {loading ? (
+              <p className="text-center text-gray-500">Loading ucapan...</p>
+            ) : dataUcapan.length === 0 ? (
+              <p className="text-center text-gray-500">Belum ada ucapan.</p>
+            ) : (
+              <ul className="space-y-6">
+                {dataUcapan.map((item, index) => (
+                  <li key={index} className="bg-white p-4 rounded-lg shadow border border-rose-100">
+                    <p className="font-semibold text-gray-800">{item.nama}</p>
+                    <p className="text-gray-700">{item.pesan}</p>
+                  </li>
+                ))}
+              </ul>
+            )} */}
+          {/* </div> */}
+        </section>
 
           {/* Footer */}
           <footer className="py-8 px-4 bg-rose-50 text-center text-gray-600">
