@@ -58,7 +58,7 @@ function App() {
     // Delay scroll to allow rendering first
     setTimeout(() => {
       contentRef.current?.scrollIntoView({ behavior: 'smooth' });
-    }, 1000); // Short delay
+    }, 0); // Short delay
 
   };
 
@@ -299,27 +299,7 @@ function App() {
             <div className="max-w-4xl mx-auto text-center space-y-12">
               <h2 className="font-serif text-3xl md:text-4xl text-gray-800">Jadwal Acara</h2>
 
-              <div className="grid md:grid-cols-2 gap-8">
-                <div className="bg-rose-50 p-8 rounded-2xl shadow-lg transform hover:-translate-y-1 transition-all duration-300">
-                  <div className="bg-white w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-6">
-                    <Calendar className="w-8 h-8 text-rose-400" />
-                  </div>
-                  <h3 className="font-serif text-2xl text-gray-800 mb-4">Akad Nikah</h3>
-                  <div className="space-y-2 text-gray-600">
-                    <p className="flex items-center justify-center gap-2">
-                      <Calendar className="w-5 h-5" />
-                      Sabtu, 19 Juli 2025
-                    </p>
-                    <p className="flex items-center justify-center gap-2">
-                      <Clock className="w-5 h-5" />
-                      09:00 - 11:00 WIB
-                    </p>
-                    <p className="flex items-center justify-center gap-2">
-                      <MapPin className="w-5 h-5" />
-                      Kedungpring, Kemranjen, Banyumas
-                    </p>
-                  </div>
-                </div>
+              <div className="grid md:grid-cols-1 gap-8">
 
                 <div className="bg-rose-50 p-8 rounded-2xl shadow-lg transform hover:-translate-y-1 transition-all duration-300">
                   <div className="bg-white w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-6">
