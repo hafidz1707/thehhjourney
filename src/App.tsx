@@ -317,7 +317,7 @@ function App() {
                     </p>
                     <p className="flex items-center justify-center gap-2">
                       <MapPin className="w-5 h-5" />
-                      Kedungpring, Kemranjen, Banyumas
+                      Desa Kedungpring RT 03/03, Kec. Kemranjen, Kab. Banyumas, Jawa Tengah 53194
                     </p>
                   </div>
                 </div>
